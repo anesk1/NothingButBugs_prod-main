@@ -1,0 +1,51 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+  <head>
+  {% block styles %}
+  {{super()}}
+    <style>
+      nav.custom{
+        display: inline-grid;
+        grid-template-columns: 20% auto;
+        background-color: #900000;
+        padding: 1em 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 2em;
+      }
+      a.nav-custom{
+        margin: auto 10%;
+        color: white;
+        font-size: .5em;
+      }
+    </style>
+  {% endblock %}
+
+ {% block title %}
+     <title> Text-Swap </title>
+ {% endblock %}
+  </head>
+{% endblock %}
+
+{% block body %}
+  <body>
+  {% block navbar %}
+    <nav class="custom">
+      <span>TextSwap</span>
+      <span>
+        <a class="nav-custom" href="/">Browse latest</a>
+        <a class="nav-custom" href="/Post_books">Post your books</a>
+        <a class="nav-custom" href="/home">Home</a>
+        {% if current_user.is_authenticated %}
+          <a class="nav-custom" href="/logout">Logout</a>
+        {% else %}
+          <a class="nav-custom" href="/login">Login</a>
+        {% endif %}
+      </span>
+    </nav>
+  {% endblock %}
+    {% block content %}{% endblock %}
+  </body>
+{% endblock %}
